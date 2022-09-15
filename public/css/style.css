@@ -98,8 +98,12 @@ body {
   border-radius: 3px;
   border: 1px solid #DBDBDB;
   padding: 0 18px;
-  overflow: hidden;
+  overflow-y: hidden;
   position: relative;
+}
+
+.stories::-webkit-scrollbar {
+  display: none;
 }
 
 .story {

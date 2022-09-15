@@ -1,12 +1,22 @@
-export default function User() {
+function UserProfile(props) {
   return (
     <div class="usuario">
-      <img src="assets/img/catanacomics.svg" />
+      <img src={props.userImage} />
       <div class="texto">
-        <strong>catanacomics</strong>
-        Catana
-        <ion-icon name="pencil" ></ion-icon>
+        <strong>{props.userAt}</strong>
+        {props.userName}
+        <ion-icon name="pencil"></ion-icon>
       </div>
     </div>
+  )
+}
+
+export default function User() {
+  return (
+    <UserProfile
+      userImage="assets/img/catanacomics.svg"
+      userAt="catanacomics"
+      userName="Catana"
+    />
   )
 }
