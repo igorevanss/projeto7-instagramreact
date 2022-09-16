@@ -1,4 +1,12 @@
+import { useState } from "react"
+
 function Post(props) {
+  const [bookName,setBookName] = useState(`${"bookmark-outline"}`)
+
+  function bookmarkClicked(postId) {
+    setBookName("bookmark")
+  }
+
   return (
     <div class="post">
       <div class="topo">
@@ -24,7 +32,7 @@ function Post(props) {
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon onClick={()=>alert("haverá uma função em freve nesse ícone!")} name="bookmark-outline"></ion-icon>
+            <ion-icon onClick={()=>bookmarkClicked(props.id)} name={bookName}></ion-icon>
           </div>
         </div>
 
@@ -42,6 +50,7 @@ function Post(props) {
 
 const posts = [
   {
+    id:'1',
     userImage: 'assets/img/meowed.svg',
     userName: 'meowed',
     postImage: 'assets/img/gato-telefone.svg',
@@ -50,6 +59,7 @@ const posts = [
     likesNumber: '101.523'
   },
   {
+    id: '2',
     userImage: 'assets/img/barked.svg',
     userName: 'barked',
     postImage: 'assets/img/dog.svg',
