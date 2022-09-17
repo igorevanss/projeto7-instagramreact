@@ -39,9 +39,9 @@ function Post(props) {
         </div>
       </div>
 
-      <div class="conteudo">
+      <div class="conteudo">0
         <img
-          onClick={imageLiker}
+          onDoubleClick={imageLiker}
           src={props.postImage}
           alt={'you can see the person'}
         />
