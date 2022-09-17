@@ -13,9 +13,9 @@ function Post(props) {
   }
 
   function likesCounter() {
-    liked
+    !liked
       ? setCounter(Number(props.likesNumber) + 1)
-      : setCounter(Number(props.likesNumber) - 1)
+      : setCounter(Number(props.likesNumber) - 0, 5)
   }
 
   function imageLiker() {
@@ -91,7 +91,7 @@ const posts = [
     postImage: 'assets/img/gato-telefone.svg',
     likesImage: 'assets/img/respondeai.svg',
     likesName: 'respondeai',
-    likesNumber: '101.523'
+    likesNumber: '101523'
   },
   {
     liked: 'false',
@@ -100,7 +100,7 @@ const posts = [
     postImage: 'assets/img/dog.svg',
     likesImage: 'assets/img/adorable_animals.svg',
     likesName: 'adorable_animals',
-    likesNumber: '99.159'
+    likesNumber: '99159'
   }
 ]
 
