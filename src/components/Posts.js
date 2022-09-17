@@ -43,7 +43,6 @@ function Post(props) {
       </div>
 
       <div class="conteudo">
-        0
         <img
           onDoubleClick={imageLiker}
           src={props.postImage}
