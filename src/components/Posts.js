@@ -9,7 +9,18 @@ function Post(props) {
 
   function ifClicked() {
     setLiked(!liked)
-    setCounter(counter + 1)
+    likesCounter()
+  }
+
+  function likesCounter() {
+    liked
+      ? setCounter(Number(props.likesNumber) + 1)
+      : setCounter(Number(props.likesNumber) - 1)
+  }
+
+  function imageLiker() {
+    setLiked(true)
+    likesCounter()
   }
 
   function ifBooked() {
@@ -30,7 +41,7 @@ function Post(props) {
 
       <div class="conteudo">
         <img
-          onClick={() => setLiked(true)}
+          onClick={imageLiker}
           src={props.postImage}
           alt={'you can see the person'}
         />
@@ -64,7 +75,7 @@ function Post(props) {
           <img src={props.likesImage} alt={'you can see the person'} />
           <div class="texto">
             Curtido por <strong>{props.likesName}</strong> e{' '}
-            <strong>outras {props.likesNumber} pessoas</strong>
+            <strong>outras {counter} pessoas</strong>
           </div>
         </div>
       </div>
