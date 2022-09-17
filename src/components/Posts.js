@@ -5,6 +5,7 @@ function Post(props) {
     !(<ion-icon onClick={ifBooked} name="bookmark-outline"></ion-icon>)
   )
   const [liked, setLiked] = useState(!props.liked)
+  console.log(liked)
   const [counter, setCounter] = useState(props.likesNumber)
 
   function ifClicked() {
@@ -20,7 +21,9 @@ function Post(props) {
 
   function imageLiker() {
     setLiked(true)
-    likesCounter()
+    if (!liked) {
+      likesCounter()
+    }
   }
 
   function ifBooked() {
@@ -39,7 +42,8 @@ function Post(props) {
         </div>
       </div>
 
-      <div class="conteudo">0
+      <div class="conteudo">
+        0
         <img
           onDoubleClick={imageLiker}
           src={props.postImage}
