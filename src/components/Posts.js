@@ -1,17 +1,26 @@
-import { useState } from "react"
+import React, { useState } from 'react'
 
 function Post(props) {
-  const [bookName,setBookName] = useState(`${"bookmark-outline"}`)
+  const [clicked, setClicked] = useState(
+    !(<ion-icon onClick={ifBooked} name="bookmark-outline"></ion-icon>)
+  )
+  const [liked, setLiked] = useState(!props.liked)
+  const [counter, setCounter] = useState(props.likesNumber)
 
-  function bookmarkClicked(postId) {
-    setBookName("bookmark")
+  function ifClicked() {
+    setLiked(!liked)
+    setCounter(counter + 1)
+  }
+
+  function ifBooked() {
+    setClicked(!clicked)
   }
 
   return (
     <div class="post">
       <div class="topo">
         <div class="usuario">
-          <img src={props.userImage} />
+          <img src={props.userImage} alt={'you can see the person'} />
           {props.userName}
         </div>
         <div class="acoes">
@@ -20,24 +29,39 @@ function Post(props) {
       </div>
 
       <div class="conteudo">
-        <img src={props.postImage} />
+        <img
+          onClick={() => setLiked(true)}
+          src={props.postImage}
+          alt={'you can see the person'}
+        />
       </div>
 
       <div class="fundo">
         <div class="acoes">
           <div>
-            <ion-icon onClick={()=>alert("haverá uma função em freve nesse ícone!")}
-            name="heart-outline"></ion-icon>
+            {liked ? (
+              <ion-icon
+                onClick={ifClicked}
+                class="if-liked"
+                name="heart"
+              ></ion-icon>
+            ) : (
+              <ion-icon onClick={ifClicked} name="heart-outline"></ion-icon>
+            )}
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon onClick={()=>bookmarkClicked(props.id)} name={bookName}></ion-icon>
+            {clicked ? (
+              <ion-icon onClick={ifBooked} name="bookmark"></ion-icon>
+            ) : (
+              <ion-icon onClick={ifBooked} name="bookmark-outline"></ion-icon>
+            )}
           </div>
         </div>
 
         <div class="curtidas">
-          <img src={props.likesImage} />
+          <img src={props.likesImage} alt={'you can see the person'} />
           <div class="texto">
             Curtido por <strong>{props.likesName}</strong> e{' '}
             <strong>outras {props.likesNumber} pessoas</strong>
@@ -50,7 +74,7 @@ function Post(props) {
 
 const posts = [
   {
-    id:'1',
+    liked: 'false',
     userImage: 'assets/img/meowed.svg',
     userName: 'meowed',
     postImage: 'assets/img/gato-telefone.svg',
@@ -59,7 +83,7 @@ const posts = [
     likesNumber: '101.523'
   },
   {
-    id: '2',
+    liked: 'false',
     userImage: 'assets/img/barked.svg',
     userName: 'barked',
     postImage: 'assets/img/dog.svg',
@@ -80,6 +104,7 @@ export default function Posts() {
           likesImage={post.likesImage}
           likesName={post.likesName}
           likesNumber={post.likesNumber}
+          liked={post.liked}
         />
       ))}
     </div>

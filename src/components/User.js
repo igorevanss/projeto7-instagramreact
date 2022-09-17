@@ -19,11 +19,11 @@ function UserProfile(props) {
 
   return (
     <div class="usuario">
-      <img onClick={() => newPic()} src={uPic} alt={'Profile'} />
+      <img onClick={newPic} src={uPic} alt={'Profile'} />
       <div class="texto">
         <strong>{props.userAt}</strong>
         {uName}
-        <ion-icon onClick={() => newName()} name="pencil"></ion-icon>
+        <ion-icon onClick={newName} name="pencil"></ion-icon>
       </div>
     </div>
   )
