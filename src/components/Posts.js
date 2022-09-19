@@ -5,7 +5,6 @@ function Post(props) {
     !(<ion-icon onClick={ifBooked} name="bookmark-outline"></ion-icon>)
   )
   const [liked, setLiked] = useState(!props.liked)
-  console.log(liked)
   const [counter, setCounter] = useState(props.likesNumber)
 
   function ifClicked() {

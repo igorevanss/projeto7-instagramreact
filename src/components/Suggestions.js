@@ -2,7 +2,7 @@ function Suggestion(props) {
   return (
     <div class="sugestao">
       <div class="usuario">
-        <img src={props.suggestionImage} />
+        <img src={props.suggestionImage} alt='you will see something' />
         <div class="texto">
           <div class="nome">{props.suggestionAt}</div>
           <div class="razao">{props.followStatus}</div>
